@@ -18,17 +18,11 @@ contract Deploy is Script {
 
         // 1. Deploy the Response Contract first
         LoanAlertResponse responseContract = new LoanAlertResponse();
-        console.log(
-            "LoanAlertResponse deployed at:",
-            address(responseContract)
-        );
+        console.log("LoanAlertResponse deployed at:", address(responseContract));
 
         // 2. Deploy the Trap Contract
         FlashLoanCooldownTrap trapContract = new FlashLoanCooldownTrap();
-        console.log(
-            "FlashLoanCooldownTrap deployed at:",
-            address(trapContract)
-        );
+        console.log("FlashLoanCooldownTrap deployed at:", address(trapContract));
 
         // 3. Ownership was removed for simplicity.
 

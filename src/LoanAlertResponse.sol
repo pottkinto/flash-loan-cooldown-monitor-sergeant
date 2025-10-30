@@ -15,11 +15,7 @@ contract LoanAlertResponse is Ownable {
     uint256 public lastViolationTime;
     uint256 public lastLoanTime;
 
-    event AlertLogged(
-        string message,
-        uint256 lastLoan,
-        uint256 violationTime
-    );
+    event AlertLogged(string message, uint256 lastLoan, uint256 violationTime);
 
     constructor() Ownable(msg.sender) {}
 
@@ -28,14 +24,10 @@ contract LoanAlertResponse is Ownable {
      * The signature (string,uint256,uint256) MUST MATCH
      * the payload from the trap's shouldRespond() function.
      */
-    function logCooldownViolation(
-        string memory message,
-        uint256 lastLoan,
-        uint256 violationTime
-    ) external {
+    function logCooldownViolation(string memory message, uint256 lastLoan, uint256 violationTime) external {
         // In a real PoC, you would add an access control modifier
         // to ensure only the Drosera operator can call this.
-        
+
         lastAlert = message;
         lastLoanTime = lastLoan;
         lastViolationTime = violationTime;

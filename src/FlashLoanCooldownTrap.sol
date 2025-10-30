@@ -35,7 +35,7 @@ contract FlashLoanCooldownTrap is ITrap {
     function collect() external view override returns (bytes memory) {
         uint256 lastLoan = simulatedLastLoanTimestamp;
         uint256 currentBlockTime = block.timestamp; // FIX: Was uint264
-        
+
         // We pass both values to the shouldRespond function
         return abi.encode(lastLoan, currentBlockTime);
     }
@@ -43,17 +43,17 @@ contract FlashLoanCooldownTrap is ITrap {
     /**
      * @dev This function analyzes data. It MUST be pure.
      */
-    function shouldRespond(
-        bytes[] calldata data
-    ) external pure override returns (bool, bytes memory) {
-        (uint256 lastLoan, uint256 currentBlockTime) = abi.decode(
-            data[0],
-            (uint256, uint256) // FIX: Was uint264
-        );
+    function shouldRespond(bytes[] calldata data) external pure override returns (bool, bytes memory) {
+        (uint256 lastLoan, uint256 currentBlockTime) =
+            abi.decode(
+                data[0],
+                (uint256, uint256) // FIX: Was uint264
+            );
 
         // Check for the violation:
-        if (lastLoan != 0 && currentBlockTime < (lastLoan + COOLDOWN)) { // FIX: Removed uint264 casts
-            // VIOLATION DETECTED!
+        if (lastLoan != 0 && currentBlockTime < (lastLoan + COOLDOWN)) {
+            // FIX: Removed uint264 casts
+        // VIOLATION DETECTED!
             string memory alertMessage = "CRITICAL_ALERT: Flash Loan Cooldown Violated!";
             return (true, abi.encode(alertMessage, lastLoan, currentBlockTime));
         }

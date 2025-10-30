@@ -19,9 +19,7 @@ contract CadetTrap is ITrap {
     }
 
     // FIX: Add 'override' keyword
-    function shouldRespond(
-        bytes[] calldata data
-    ) external pure override returns (bool, bytes memory) {
+    function shouldRespond(bytes[] calldata data) external pure override returns (bool, bytes memory) {
         (bool active, string memory name) = abi.decode(data[0], (bool, string));
         if (!active || bytes(name).length == 0) {
             return (false, bytes(""));

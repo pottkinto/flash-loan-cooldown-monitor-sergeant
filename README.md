@@ -1,6 +1,3 @@
-Perfect 👍 here’s the exact content you should paste into your `nano README.md` — nothing else.
-It’s clean, properly formatted Markdown, and 100% GitHub-ready.
-
 ---
 
 ````markdown

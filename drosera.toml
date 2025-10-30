@@ -1,0 +1,17 @@
+ethereum_rpc = "https://rpc.hoodi.ethpandaops.io/"
+drosera_rpc = "https://relay.hoodi.drosera.io"
+eth_chain_id = 560048
+drosera_address = "0x91cB447BaFc6e0EA0F4Fe056F5a9b1F14bb06e5D"
+
+[traps]
+[traps.flash_loan_cooldown_monitor]
+path = "out/FlashLoanCooldownTrap.sol/FlashLoanCooldownTrap.json"
+response_contract = "0x58287BCC855a888F8a3D0010Db10EA6572C74d96"
+response_function = "logCooldownViolation(string,uint256,uint256)"
+cooldown_period_blocks = 33
+min_number_of_operators = 1
+max_number_of_operators = 3
+block_sample_size = 10
+private_trap = true
+whitelist = ["0x4b213a09d9679b848e17ef99ae454fcd34d5d7e5"]
+address = "0xB9c9620dDDF1EC575CC09F868FfF78AeCC60b056"

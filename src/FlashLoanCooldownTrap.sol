@@ -53,7 +53,7 @@ contract FlashLoanCooldownTrap is ITrap {
         // Check for the violation:
         if (lastLoan != 0 && currentBlockTime < (lastLoan + COOLDOWN)) {
             // FIX: Removed uint264 casts
-        // VIOLATION DETECTED!
+            // VIOLATION DETECTED!
             string memory alertMessage = "CRITICAL_ALERT: Flash Loan Cooldown Violated!";
             return (true, abi.encode(alertMessage, lastLoan, currentBlockTime));
         }
